@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01testcal.html</title>
+
+<style> *{font-size: 12pt;} </style>
+<script>
+    function mycal(){
+      var isopchecked=false;
+      var oper=false; //+연산, -빼기, *곱, /몫 if/switch
+      var su1=frm.num1.value; //값받기 7문자
+      var su2=frm.num2.value; //값받기 2문자
+
+      for(var i=0; i<frm.op.length; i++) {
+        if(frm.op[i].checked) {
+            oper=frm.op[i].id;
+            isopchecked=true;
+        }//else{alert('111111111 연산자를 선택하세요');}
+      }
+
+      if(isopchecked==false) {
+        alert('22222222 연산자를 선택하세요');
+        return;
+      }
+
+      var first = parseInt(su1);
+      var second = parseInt(su2);
+
+      if(oper==="add") {
+        document.getElementById('res').value=eval(su1+"+"+su2); //first+second;
+        }else if (oper==="sub") {
+            document.getElementById('res').value=eval(su1+"-"+su2);
+        }else if (oper==="mul") {
+            document.getElementById('res').value=eval(su1+"*"+su2);
+        }else if (oper==="div") {
+            document.getElementById('res').value=eval(su1+"/"+su2);
+        }else{}
+    
+}//end
+</script>
+</head>
+<body>
+    <h2>01testcal.html</h2>
+    <form name="frm">
+        숫자1 : <input type="text" name="num1" value="7"><br>
+        숫자2 : <input type="text" name="num2" value="2"><br>
+    
+        연산 :
+        <input type="radio" name="op" id="add"><label for="add">+덧셈</label>
+        <input type="radio" name="op" id="sub"><label for="sub">-빼기</label>
+        <input type="radio" name="op" id="mul"><label for="mul">*곱셈</label>
+        <input type="radio" name="op" id="div"><label for="div">/몫</label>
+        <br>
+        결과 : 
+         <input type="text" id="res" name="res" readonly="readonly"><br>
+
+         <input type="button" value="사칙연산처리" onclick="mycal()">
+         <input type="button" value="reload" onclick="location.reload();">
+         <input type="button" value="윈도우 닫기" onclick="self.close()">
+    </form>
+</body>
+</html>
